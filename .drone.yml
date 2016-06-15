@@ -1,23 +1,19 @@
-workspace:
-  base: /go
-  path: src/github.com/drone-plugins/drone-s3-sync
-
 pipeline:
-  build:
+  test:
     image: golang:1.6
     environment:
       - CGO_ENABLED=0
+      - GOPATH=/drone
     commands:
       - make vet
       - make build
       - make test
-
   docker:
-    repo: plugins/drone-s3-sync
     storage_driver: overlay
-    tag: latest
+    repo: plugins/drone-s3-sync
+    tag: [ "latest" ]
     when:
-      branch: master
+      branch: release/0.4
       event: push
 
 plugin:
