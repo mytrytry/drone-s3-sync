@@ -41,6 +41,7 @@ docker run --rm \
   -e PLUGIN_SOURCE=<source> \
   -e PLUGIN_TARGET=<target> \
   -e PLUGIN_BUCKET=<bucket> \
+  -e PLUGIN_REFRESH_URL=<qiniu_refresh_url> \
   -e AWS_ACCESS_KEY_ID=<access_key> \
   -e AWS_SECRET_ACCESS_KEY=<secret_key> \
   -v $(pwd):$(pwd) \
