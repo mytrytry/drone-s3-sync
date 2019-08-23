@@ -24,6 +24,7 @@ type Plugin struct {
 	Metadata               map[string]map[string]string
 	Redirects              map[string]string
 	CloudFrontDistribution string
+        RefreshUrl             string
 	DryRun                 bool
 	PathStyle              bool
 	client                 AWS
@@ -151,7 +152,13 @@ func (p *Plugin) createInvalidateJob() {
 			remote: filepath.Join("/", p.Target, "*"),
 			action: "invalidateCloudFront",
 		})
-	}
+	} else if len(p.RefreshUrl) > 0 {
+                p.jobs = append(p.jobs, job{
+                        local:  "",
+                        remote: p.RefreshUrl,
+                        action: "invalidateQiniu",
+                })
+        }
 }
 
 func (p *Plugin) runJobs() {
@@ -173,6 +180,8 @@ func (p *Plugin) runJobs() {
 				err = client.Delete(j.remote)
 			} else if j.action == "invalidateCloudFront" {
 				invalidateJob = &j
+                        } else if j.action == "invalidateQiniu" {
+                                invalidateJob = &j
 			} else {
 				err = nil
 			}
@@ -190,7 +199,12 @@ func (p *Plugin) runJobs() {
 	}
 
 	if invalidateJob != nil {
-		err := client.Invalidate(invalidateJob.remote)
+                var err error
+                if invalidateJob.action == "invalidateQiniu" {
+		        err = client.RefreshUrl(invalidateJob.remote)
+                } else {
+                        err = client.Invalidate(invalidateJob.remote)
+                }
 		if err != nil {
 			fmt.Printf("ERROR: failed to %s %s to %s: %+v\n", invalidateJob.action, invalidateJob.local, invalidateJob.remote, err)
 			os.Exit(1)

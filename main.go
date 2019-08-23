@@ -108,6 +108,11 @@ func main() {
 			Usage:  "id of cloudfront distribution to invalidate",
 			EnvVar: "PLUGIN_CLOUDFRONT_DISTRIBUTION",
 		},
+                cli.StringFlag{
+                        Name:   "refresh-url",
+                        Usage:  "qiniu url to invalidate",
+                        EnvVar: "PLUGIN_REFRESH_URL",
+                },
 		cli.BoolFlag{
 			Name:   "dry-run",
 			Usage:  "dry run disables api calls",
@@ -151,6 +156,7 @@ func run(c *cli.Context) error {
 		Metadata:               c.Generic("metadata").(*DeepStringMapFlag).Get(),
 		Redirects:              c.Generic("redirects").(*MapFlag).Get(),
 		CloudFrontDistribution: c.String("cloudfront-distribution"),
+                RefreshUrl:		c.String("refresh-url"),
 		DryRun:                 c.Bool("dry-run"),
 		MaxConcurrency:         c.Int("max-concurrency"),
 	}

@@ -17,6 +17,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/cloudfront"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/ryanuber/go-glob"
+	"github.com/qiniu/api.v7/auth/qbox"
+	"github.com/qiniu/api.v7/cdn"
 )
 
 type AWS struct {
@@ -390,3 +392,24 @@ func (a *AWS) Invalidate(invalidatePath string) error {
 	})
 	return err
 }
+
+func (a *AWS) RefreshUrl(refreshUrl string) error {
+        p := a.plugin
+        debug("Invalidating \"%s\"", refreshUrl)
+        mac := qbox.NewMac(p.Key, p.Secret)
+        cdnManager := cdn.NewCdnManager(mac)
+
+        urlsToRefresh := []string{
+                refreshUrl,
+        } 
+        
+        var err error 
+        if strings.HasSuffix(refreshUrl, "/") {
+                _, err = cdnManager.RefreshDirs(urlsToRefresh)
+        } else {
+                _, err = cdnManager.RefreshUrls(urlsToRefresh)
+        }
+    
+    	return err;
+}
+

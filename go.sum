@@ -11,6 +11,10 @@ github.com/konsorten/go-windows-terminal-sequences v1.0.1 h1:mweAR1A6xJ3oS2pRaGi
 github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/qiniu/api.v7 v7.2.5+incompatible h1:6KKaGt7MbFzVGSniwzv7qsM/Qv0or4SkRJfmak8LqZE=
+github.com/qiniu/api.v7 v7.2.5+incompatible/go.mod h1:V8/EzlTgLN6q0s0CJmg/I81ytsvldSF22F7h6MI02+c=
+github.com/qiniu/x v7.0.8+incompatible h1:P4LASsfwJY7SoZ13dwqBwGhZh7HKU8cdFVCUkmz0gZ8=
+github.com/qiniu/x v7.0.8+incompatible/go.mod h1:KpRKWYG/GaidPQVpoQ2Cvuvtts3gYnoo2PftgdmAiU4=
 github.com/ryanuber/go-glob v0.0.0-20170128012129-256dc444b735 h1:7YvPJVmEeFHR1Tj9sZEYsmarJEQfMVYpd/Vyy/A8dqE=
 github.com/ryanuber/go-glob v0.0.0-20170128012129-256dc444b735/go.mod h1:807d1WSdnB0XRJzKNil9Om6lcp/3a0v4qIHxIXzX/Yc=
 github.com/sirupsen/logrus v1.3.0 h1:hI/7Q+DtNZ2kINb6qt/lS+IyXnHQe9e90POfeewL/ME=
@@ -26,8 +30,11 @@ golang.org/x/crypto v0.0.0-20180904163835-0709b304e793 h1:u+LnwYTOOW7Ukr/fppxEb1
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/net v0.0.0-20190108150841-be88a9aa50a1 h1:GPpXcPUwWLSpS88tNfabqPG/HJ5b2k2yTwzkSx1sf4c=
 golang.org/x/net v0.0.0-20190108150841-be88a9aa50a1/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
+golang.org/x/net v0.0.0-20190123100745-ed066c81e75e h1:bxSWzJo7GXgFK5s59u/Ll3irPl3HcimUiCwCbCf+9yw=
 golang.org/x/net v0.0.0-20190123100745-ed066c81e75e/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33 h1:I6FyU15t786LL7oL/hn43zqTuEGr4PN7F4XJ1p4E3Y8=
 golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/text v0.3.0 h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+qiniupkg.com/x v7.0.8+incompatible h1:Ek0ZVi5IyaWUAFkJbPRiqlh34xDM4uoKw7KqdpankvU=
+qiniupkg.com/x v7.0.8+incompatible/go.mod h1:6sLxR5IZ03vMaRAQAY/5MvzofeoBIjO4XE0Njv6V1ms=
