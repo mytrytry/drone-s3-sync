@@ -17,6 +17,7 @@ type Plugin struct {
 	Source                 string
 	Target                 string
 	Delete                 bool
+	DeleteBeforeUpload     bool
 	Access                 map[string]string
 	CacheControl           map[string]string
 	ContentType            map[string]string
@@ -174,7 +175,7 @@ func (p *Plugin) runJobs() {
 		go func(j job) {
 			var err error
 			if j.action == "upload" {
-				if p.Delete {
+				if p.DeleteBeforeUpload {
 					err = client.Delete(j.remote)
 				}
 				err = client.Upload(j.local, j.remote)

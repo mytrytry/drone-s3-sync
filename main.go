@@ -67,6 +67,11 @@ func main() {
 			Usage:  "delete locally removed files from the target",
 			EnvVar: "PLUGIN_DELETE",
 		},
+		cli.BoolFlag{
+                        Name:   "delete-before-upload",
+                        Usage:  "delete remote file before upload",
+                        EnvVar: "PLUGIN_DELETE_BEFORE_UPLOAD",
+                },
 		cli.GenericFlag{
 			Name:   "access",
 			Usage:  "access control settings",
@@ -149,6 +154,7 @@ func run(c *cli.Context) error {
 		Source:                 c.String("source"),
 		Target:                 c.String("target"),
 		Delete:                 c.Bool("delete"),
+		DeleteBeforeUpload:     c.Bool("delete-before-upload"),
 		Access:                 c.Generic("access").(*StringMapFlag).Get(),
 		CacheControl:           c.Generic("cache-control").(*StringMapFlag).Get(),
 		ContentType:            c.Generic("content-type").(*StringMapFlag).Get(),
