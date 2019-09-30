@@ -123,6 +123,7 @@ func (p *Plugin) createSyncJobs() {
 			action: "redirect",
 		})
 	}
+
 	if p.Delete {
 		for _, r := range remote {
 			found := false
@@ -173,6 +174,9 @@ func (p *Plugin) runJobs() {
 		go func(j job) {
 			var err error
 			if j.action == "upload" {
+				if p.Delete {
+					err = client.Delete(j.remote)
+				}
 				err = client.Upload(j.local, j.remote)
 			} else if j.action == "redirect" {
 				err = client.Redirect(j.local, j.remote)
